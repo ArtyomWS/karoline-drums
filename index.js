@@ -1,12 +1,16 @@
 const playButtons = document.querySelectorAll('.drum');
 
+document.addEventListener('keydown', (event) => {
+    getSound(event.key);
+});
+
 playButtons.forEach( (button) => button.addEventListener('click', handleClick));
 
 function handleClick() {
-    getSoud(this.textContent);
+    getSound(this.textContent);
 }
 
-function getSoud(buttonName) {
+function getSound(buttonName) {
 
     switch (buttonName) {
         case 'w':
