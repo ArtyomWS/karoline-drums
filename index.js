@@ -1,13 +1,23 @@
 const playButtons = document.querySelectorAll('.drum');
-
+const buttons = ['w','a','s','d','j','k','l'];
 document.addEventListener('keydown', (event) => {
     getSound(event.key);
+    burronAnimation(event.key);
 });
 
 playButtons.forEach( (button) => button.addEventListener('click', handleClick));
 
 function handleClick() {
     getSound(this.textContent);
+    burronAnimation(this.textContent);
+}
+
+function burronAnimation(button) {
+    if (!buttons.includes(button)) {
+        return;
+    }
+    document.querySelectorAll('button').forEach( (button) => button.classList.remove('pressed'));
+    document.querySelector('.' + button).classList.add('pressed');
 }
 
 function getSound(buttonName) {
@@ -34,5 +44,7 @@ function getSound(buttonName) {
         case "l":
             new Audio('./sounds/kick-bass.mp3').play();
             break;
+        
+        default: ;
     }
 }
